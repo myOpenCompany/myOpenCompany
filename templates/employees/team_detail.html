@@ -1,0 +1,23 @@
+{% extends "base.html"%}
+
+{% block content %}
+<table class="styled detail">
+    <tr>
+        <th>siglum</th>
+        <td>{{team.siglum}}</td>
+    </tr>
+    <tr>
+        <th>name</th>
+        <td>{{team.name}}</td>
+    </tr>
+    <tr>
+        <th>parent team</th>
+        <td><a href="{{team.parent_team.get_absolute_url}}">{{team.parent_team}}</a></td>
+    </tr>
+    <tr>
+        <th>description</th>
+        <td>{{team.description}}</td>
+    </tr>
+</table>
+{% include "common/object_actions.html" %}
+{% endblock %}
