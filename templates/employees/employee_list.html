@@ -1,0 +1,18 @@
+{% extends "base.html" %}
+
+{% block content %}
+<table class="styled">
+    <tr>
+        <th>login</th>
+        <th>name</th>
+        <th>team</th>
+    </tr>
+    {% for employee in employee_list %}
+    <tr>
+        <td>{{employee.username}}</a></td>
+        <td><a href="{{employee.get_absolute_url}}">{{employee}}</a></td>
+        <td><a href="{{employee.team.get_absolute_url}}">{{employee.team}}</a></td>
+    </tr>
+    {% endfor %}
+</table>
+{% endblock%}

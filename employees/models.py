@@ -1,5 +1,6 @@
-from django.db import models
+import re
 
+from django.db import models
 from django.contrib.auth.models import User
 
 
@@ -28,5 +29,19 @@ class Employee(User):
     
     team = models.ForeignKey(Team)
     
+    def __unicode__(self):
+        return self.first_name + " " + self.last_name
+    
     def get_absolute_url(self):
-        return "/employees/employees/" + self.id
+        return "/employees/employees/" + str(self.id)
+    
+    # In the save function, we implement our own password
+    # management. If the password is already hashed in the form
+    # we just dont change anything otherwise we call the set_password()
+    def save(self):
+        password = ""
+        r = re.compile('sha1\$.*')
+        if not r.match(self.password):
+            password = self.password
+            self.set_password(self.password)
+        User.save(self)
