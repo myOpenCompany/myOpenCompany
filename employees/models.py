@@ -13,6 +13,7 @@ class Team(models.Model):
     description = models.TextField()
     
     class Meta:
+        '''Teams should be ordered by their parent team first'''
         ordering = ["parent_team__siglum","siglum"]
 
     def __unicode__(self):
@@ -22,6 +23,7 @@ class Team(models.Model):
         return "/employees/teams/" + str(self.id)
         
     def get_employees(self):
+        '''Returns the list of employees belonging to this team'''
         return self.employee_set.all()
         
         
