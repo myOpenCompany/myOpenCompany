@@ -1,23 +1,6 @@
 {% extends "base.html" %}
 
 {% block content %}
-<table class="styled detail">
-    <tr>
-        <th>login</th>
-        <td>{{employee.username}}</td>
-    </tr>
-    <tr>
-        <th>last name</th>
-        <td>{{employee.last_name}}</td>
-    </tr>
-    <tr>
-        <th>first name</th>
-        <td>{{employee.first_name}}</td>
-    </tr>
-    <tr>
-        <th>team</th>
-        <td><a href="{{employee.team.get_absolute_url}}">{{employee.team}}</a></td>
-    </tr>
-</table>
+{% include "employees/employee_property.html" %}
 {% include "common/object_actions.html" %}
 {% endblock %}

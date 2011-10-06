@@ -1,18 +1,7 @@
 {% extends "base.html" %}
 
 {% block content %}
-<table class="styled">
-    <tr>
-        <th>siglum</th>
-        <th>name</th>
-        <th>parent team</th>
-    </tr>
-    {% for team in team_list %}
-    <tr>
-        <td><a href="{{team.get_absolute_url}}">{{team.siglum}}</a></td>
-        <td><a href="{{team.get_absolute_url}}">{{team.name}}</a></td>
-        <td><a href="{{team.parent_team.get_absolute_url}}">{{team.parent_team}}</a></td>
-    </tr>
-    {% endfor %}
-</table>
+{% include "common/table_actions.html" with object_name="team" %}
+{% include "employees/team_table.html" %}
+{% include "common/table_actions.html" with object_name="team" %}
 {% endblock%}
