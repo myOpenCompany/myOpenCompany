@@ -3,4 +3,9 @@
 {% block content %}
 {% include "employees/team_property.html" %}
 {% include "common/object_actions.html" %}
+
+<div class="block">
+<h2>Employees in this team</h2>
+{% include "employees/employee_table.html" with employee_list=team.get_employees %}
+</div>
 {% endblock %}

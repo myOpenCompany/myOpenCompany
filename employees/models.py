@@ -21,6 +21,9 @@ class Team(models.Model):
     def get_absolute_url(self):
         return "/employees/teams/" + str(self.id)
         
+    def get_employees(self):
+        return self.employee_set.all()
+        
         
         
     
