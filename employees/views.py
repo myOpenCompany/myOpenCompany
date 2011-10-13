@@ -5,6 +5,7 @@ class TeamDetailView(DetailView):
     
     pass
 
+
 class EmployeeDetailView(DetailView):
     
     pass

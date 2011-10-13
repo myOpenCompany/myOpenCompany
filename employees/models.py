@@ -33,6 +33,7 @@ class Employee(User):
     '''Describes an employee properties'''
     
     team = models.ForeignKey(Team)
+    entry_date = models.DateField()
     
     def __unicode__(self):
         return self.first_name + " " + self.last_name
