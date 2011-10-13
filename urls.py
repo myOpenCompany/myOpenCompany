@@ -5,4 +5,5 @@ from views import home_view
 urlpatterns = patterns('',
     (r'^$', home_view),
     (r'^employees/', include('employees.urls')),
+    (r'^hardware/', include('hardware.urls')),
 )

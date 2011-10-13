@@ -1,0 +1,7 @@
+{% extends "base.html" %}
+
+{% block content %}
+{% include "common/table_actions.html" with object_name="computer" %}
+{% include "hardware/computer_table.html" %}
+{% include "common/table_actions.html" with object_name="computer" %}
+{% endblock%}

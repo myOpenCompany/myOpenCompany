@@ -1,0 +1,22 @@
+<table class="styled detail">
+    <tr>
+        <th>brand</th>
+        <td>{{computer.brand}}</td>
+    </tr>
+    <tr>
+        <th>reference</th>
+        <td>{{computer.reference}}</td>
+    </tr>
+    <tr>
+        <th>serial number</th>
+        <td>{{computer.serial_number}}</td>
+    </tr>
+    <tr>
+        <th>employee</th>
+        <td><a href="{{computer.employee.get_absolute_url}}">{{computer.employee}}</td>
+    </tr>
+    <tr>
+        <th>type</th>
+        <td>{{computer.get_type_display}}</td>
+    </tr>
+</table>

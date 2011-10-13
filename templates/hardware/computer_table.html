@@ -1,0 +1,16 @@
+<table class="styled">
+    <tr>
+        <th/>
+        <th>employee</th>
+        <th>brand</th>
+        <th>reference</th>
+    </tr>
+    {% for computer in computer_list %}
+    <tr>
+        <td><input type="checkbox" id="computer_{{computer.id}}"/></td>
+        <td>{{computer.employee}}</a></td>
+        <td>{{computer.brand}}</a></td>
+        <td>{{computer.reference}}</a></td>
+    </tr>
+    {% endfor %}
+</table>
