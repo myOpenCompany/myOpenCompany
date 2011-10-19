@@ -1,0 +1,8 @@
+myOpenCompany is a web application based on [http://djangoproject.org|Django], targeted at companies for managing its resources.
+myOpenCompany is an OpenSource application, and as such, can be freely modified and redistributed.
+
+== Modules ==
+* [[employees]]: a module to handle information about the companies employees
+* devices: manage devices (phones, laptops...) provided to its employees by the company
+* skills: list and search through employees skills, such as communication, development...
+* holidays: allows employees to request and keep track of their holidays
