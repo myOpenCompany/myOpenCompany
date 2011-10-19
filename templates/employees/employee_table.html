@@ -8,7 +8,7 @@
     {% for employee in employee_list %}
     <tr>
         <td><input type="checkbox" id="employee_{{employee.id}}"/></td>
-        <td>{{employee.username}}</a></td>
+        <td>{{employee.user.username}}</a></td>
         <td><a href="{{employee.get_absolute_url}}">{{employee}}</a></td>
         <td><a href="{{employee.team.get_absolute_url}}">{{employee.team}}</a></td>
     </tr>

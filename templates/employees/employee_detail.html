@@ -1,6 +1,8 @@
 {% extends "base.html" %}
 
 {% block content %}
+{% include "employees/user_property.html" with user=employee.user %}
+<br/>
 {% include "employees/employee_property.html" %}
 {% include "common/object_actions.html" %}
 {% endblock %}

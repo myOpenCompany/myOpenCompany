@@ -5,7 +5,10 @@ from django.contrib.auth.models import User
 
 
 class Team(models.Model):
-    '''A Company is usually composed of teams'''
+    '''A Company is usually composed of teams
+    Teams are linked one to another hierarchically.
+    The root Team(s) have no parent_team
+    '''
     
     siglum = models.CharField(max_length=16, unique=True)
     name = models.CharField(max_length=64)
@@ -17,9 +20,12 @@ class Team(models.Model):
         ordering = ["parent_team__siglum","siglum"]
 
     def __unicode__(self):
+        '''Returns a human readable version of the team'''
         return self.siglum + ": " + self.name
         
     def get_absolute_url(self):
+        '''Returns the absolute URL to this team'''
+        # FIXME:use the permalink decorator
         return "/employees/teams/" + str(self.id)
         
     def get_employees(self):
@@ -28,26 +34,21 @@ class Team(models.Model):
         
         
         
+        
+class Employee(models.Model):
+    '''The Employee model stores information about an employee_set
+    This information is visible to all authenticated users
+    An employee is an extension to Django's built-in User'''
     
-class Employee(User):
-    '''Describes an employee properties'''
-    
+    user = models.OneToOneField(User)
     team = models.ForeignKey(Team)
     entry_date = models.DateField()
     
     def __unicode__(self):
-        return self.first_name + " " + self.last_name
-    
+        '''Returns a human readable version of the user'''
+        return self.user.first_name + " " + self.user.last_name
+        
     def get_absolute_url(self):
+        '''Returns the absolute URL to this team'''
+        # FIXME:use the permalink decorator
         return "/employees/employees/" + str(self.id)
-    
-    # In the save function, we implement our own password
-    # management. If the password is already hashed in the form
-    # we just dont change anything otherwise we call the set_password()
-    def save(self):
-        password = ""
-        r = re.compile('sha1\$.*')
-        if not r.match(self.password):
-            password = self.password
-            self.set_password(self.password)
-        User.save(self)

@@ -1,13 +1,13 @@
 from django.db import models
 
-from employees.models import Employee
+from django.contrib.auth.models import User
 
 class Hardware(models.Model):
     '''A base class for all hardware related classes'''
     brand = models.CharField(max_length=64)
     reference = models.CharField(max_length=64)
     serial_number = models.CharField(max_length=128)
-    employee = models.ForeignKey(Employee)
+    user = models.ForeignKey(User)
     comments = models.TextField()
     
     def __unicode__(self):

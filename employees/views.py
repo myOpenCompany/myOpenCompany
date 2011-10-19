@@ -1,11 +1,76 @@
+from django.views.generic.list import ListView
 from django.views.generic.detail import DetailView
-from django.http import HttpResponse
+from django.views.generic.edit import CreateView, UpdateView, DeleteView
 
-class TeamDetailView(DetailView):
+from django.contrib.auth.models import User
+
+from employees.models import Team, Employee
+
+
+####################################
+# Team Views
+
+class TeamList(ListView):
     
-    pass
+    model = Team
 
-
-class EmployeeDetailView(DetailView):
     
-    pass
+
+class TeamDetail(DetailView):
+    
+    model = Team
+    
+    
+
+class CreateTeam(CreateView):
+    
+    model = Team
+    
+
+
+class UpdateTeam(UpdateView):
+    
+    model = Team
+    
+
+    
+class DeleteTeam(DeleteView):
+    
+    model = Team
+
+####################################
+
+
+####################################
+# Employee Views
+    
+    
+class EmployeeList(ListView):
+    
+    model = Employee
+
+    
+
+class EmployeeDetail(DetailView):
+    
+    model = Employee
+    
+    
+
+class CreateEmployee(CreateView):
+    
+    model = Employee
+    
+
+
+class UpdateEmployee(UpdateView):
+    
+    model = Employee
+    
+
+    
+class DeleteEmployee(DeleteView):
+    
+    model = Employee
+    
+####################################

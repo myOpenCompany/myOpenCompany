@@ -5,9 +5,9 @@ from django.views.generic.edit import CreateView, DeleteView, UpdateView
 from django.views.generic.detail import DetailView
 from django.views.generic.list import ListView
 
-from employees.models import Team, Employee
-from employees.views import TeamDetailView , EmployeeDetailView
-from employees.forms import EmployeeForm
+from employees.views import TeamList, TeamDetail, CreateTeam, UpdateTeam, DeleteTeam
+from employees.views import EmployeeList, EmployeeDetail, CreateEmployee, UpdateEmployee, DeleteEmployee
+
 
 
 urlpatterns = patterns('',
@@ -22,19 +22,19 @@ urlpatterns = patterns('',
     
     ###################################
     # Teams
-    (r'^teams/$', ListView.as_view( model=Team)),
-    (r'^teams/create/$', CreateView.as_view( model=Team, ),),
-    (r'^teams/(?P<pk>\d+)/$', TeamDetailView.as_view( model=Team, ),),
-    (r'^teams/(?P<pk>\d+)/update/$', UpdateView.as_view( model=Team, ),),
-    (r'^teams/(?P<pk>\d+)/delete/$', DeleteView.as_view( model=Team, ),),
+    (r'^teams/$', TeamList.as_view()),
+    (r'^teams/create/$', CreateTeam.as_view()),
+    (r'^teams/(?P<pk>\d+)/$', TeamDetail.as_view()),
+    (r'^teams/(?P<pk>\d+)/update/$', UpdateTeam.as_view()),
+    (r'^teams/(?P<pk>\d+)/delete/$', DeleteTeam.as_view()),
     ###################################
     
     ###################################
     # Employees
-    (r'^employees/$', ListView.as_view( model=Employee)),
-    (r'^employees/create/$', CreateView.as_view( model=Employee, form_class=EmployeeForm ),),
-    (r'^employees/(?P<pk>\d+)/$', EmployeeDetailView.as_view( model=Employee, ),),
-    (r'^employees/(?P<pk>\d+)/update/$', UpdateView.as_view( model=Employee, form_class=EmployeeForm),),
-    (r'^employees/(?P<pk>\d+)/delete/$', DeleteView.as_view( model=Employee, ),),
+    (r'^employees/$', EmployeeList.as_view()),
+    (r'^employees/create/$', CreateEmployee.as_view()),
+    (r'^employees/(?P<pk>\d+)/$', EmployeeDetail.as_view()),
+    (r'^employees/(?P<pk>\d+)/update/$', UpdateEmployee.as_view(),),
+    (r'^employees/(?P<pk>\d+)/delete/$', DeleteEmployee.as_view(),),
     ###################################
 )
