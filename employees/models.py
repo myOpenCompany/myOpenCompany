@@ -62,7 +62,7 @@ class Confidential(models.Model):
     user = models.OneToOneField(User)
     birth_date = models.DateField()
     personal_phone = models.CharField(max_length=32, null=True, blank=True)
-    personal_email = models.CharField(max_length=128, null=True, blank=True)
+    personal_email = models.EmailField(null=True, blank=True)
     postal_address = models.TextField(null=True, blank=True)
     
     def __unicode__(self):
