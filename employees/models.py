@@ -36,7 +36,7 @@ class Team(models.Model):
         
         
 class Employee(models.Model):
-    '''The Employee model stores information about an employee_set
+    '''The Employee model stores information about an employee
     This information is visible to all authenticated users
     An employee is an extension to Django's built-in User'''
     
@@ -52,3 +52,18 @@ class Employee(models.Model):
         '''Returns the absolute URL to this team'''
         # FIXME:use the permalink decorator
         return "/employees/employees/" + str(self.id)
+        
+        
+class Confidential(models.Model):
+    '''The Confidential model stores personal information about a user
+    This information is intended to be only visible to users or groups having 
+    specific authorizations'''
+    
+    user = models.OneToOneField(User)
+    birth_date = models.DateField()
+    personal_phone = models.CharField(max_length=32, null=True, blank=True)
+    personal_email = models.CharField(max_length=128, null=True, blank=True)
+    postal_address = models.TextField(null=True, blank=True)
+    
+    def __unicode__(self):
+        return self.user.first_name + " " + self.user.last_name
