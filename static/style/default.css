@@ -170,6 +170,7 @@ table.styled th {
 
 
 table.detail th {
+    width: 100px;
     text-align:left;
 }
 
